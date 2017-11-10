@@ -59,7 +59,7 @@
          * @param mhtOrderNo    商户订单号,可为空(自动生成)。商户订单号和状态报告通知中的相关字段对应
          * @param notifyUrl 后台通知地址
          */
-        exports.send_hy = function (app,mobile,content,mhtOrderNo,notifyUrl)
+        function send_hy(app,mobile,content,mhtOrderNo,notifyUrl)
 
 <h5 id='2.1.2'></h4>
 
@@ -74,7 +74,7 @@
          * @param mhtOrderNo    商户订单号,可为空(自动生成)。商户订单号和状态报告通知中的相关字段对应
          * @param notifyUrl 后台通知地址
          */
-        exports.send_yx = function (app,mobile,content,mhtOrderNo,notifyUrl)
+        function send_yx (app,mobile,content,mhtOrderNo,notifyUrl)
 
 
 <h4 id='2.2'>2.2 接受通知(状态报告)</h4>
@@ -169,7 +169,7 @@
          * @param nowPayOrderNo 现在支付订单号(send_yx和send_hy方法的返回值)
          * @param mobile 手机号
          */
-        exports.query = function(app,nowPayOrderNo,mobile) 
+        function query(app,nowPayOrderNo,mobile) 
 
 
 
