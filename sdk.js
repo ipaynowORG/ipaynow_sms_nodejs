@@ -10,11 +10,28 @@ exports.App = function (appId,appKey,desKey){
 
 
 
-
+	/**
+     * 发送行业短信(需要在运营后台-短信服务管理 中进行配置)
+	 * @param app appId(应用ID)和appKey ,desKey
+     * 登录商户后台 : https://mch.ipaynow.cn ->商户中心->应用信息可以新增应用或查看appKey
+     * @param mobile    发送手机号
+     * @param content   发送内容
+     * @param mhtOrderNo    商户订单号,可为空(自动生成)。商户订单号和状态报告通知中的相关字段对应
+     * @param notifyUrl 后台通知地址
+     */
 exports.send_hy = function (app,mobile,content,mhtOrderNo,notifyUrl){
 	return send(app,mobile,content,"S01",mhtOrderNo,notifyUrl)
 }
 
+	/**
+     * 发送营销短信(需要在运营后台-短信服务管理 中进行配置)
+	 * @param app appId(应用ID)和appKey ,desKey
+     * 登录商户后台 : https://mch.ipaynow.cn ->商户中心->应用信息可以新增应用或查看appKey
+     * @param mobile    发送手机号
+     * @param content   发送内容
+     * @param mhtOrderNo    商户订单号,可为空(自动生成)。商户订单号和状态报告通知中的相关字段对应
+     * @param notifyUrl 后台通知地址
+     */
 exports.send_yx = function (app,mobile,content,mhtOrderNo,notifyUrl){
 	return send(app,mobile,content,"YX_01",mhtOrderNo,notifyUrl)
 }
@@ -68,7 +85,11 @@ function send(app,mobile,content,type,mhtOrderNo,notifyUrl) {
 
 
 
-
+	/**
+     * 查询短信发送结果(状态报告)
+     * @param nowPayOrderNo 现在支付订单号(send_yx和send_hy方法的返回值)
+     * @param mobile 手机号
+     */
 exports.query = function(app,nowPayOrderNo,mobile) {
 
 	var m = {};
