@@ -176,13 +176,12 @@
 <h2 id='3'> 3. DEMO </h2>
 
 ```
-    private static SmsSdk smsSdk = new SmsSdk();
-    public static void main(String [] args){
-        //发送行业短信
-        System.out.println(smsSdk.send_hy("13401234567","内容"null,"https://www.xxx.com"));
+    //SDK依赖
+    var sdk = require('./sdk');
+    //AppId和AppKey
+    var app = new sdk.App("xxxxxxxxx","xxxxxxxxxxxxxx","xxxxxxxxxxxxxxxxxx")
 
-        //查询发送结果
-        System.out.println(smsSdk.query("1234567890987654321","13401234567"));
+    // sdk.send_hy(app,"xxxxxx","test内容","","xxxxxxxxxx")
 
-}
+    sdk.query(app,"xxxxxxxxxxx","xxxxxxxxx");
 ```
