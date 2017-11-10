@@ -44,8 +44,6 @@
 
 <h2 id='2'> 2. API </h2>
 
-业务客户端使用SDK的相关类: cn.ipaynow.sms.sdk.SmsSdk
-
 <h4 id='2.1'> 2.1 短信发送 </h4>
 
 <h5 id='2.1.1'></h4>
