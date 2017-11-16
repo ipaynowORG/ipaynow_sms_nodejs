@@ -2,10 +2,11 @@
 
 var util = require('./util');
 
-exports.App = function (appId,appKey,desKey){
+exports.App = function (appId,appKey,desKey,isDev){
 	this.appId=appId;
 	this.appKey=appKey;
 	this.desKey = desKey;
+	this.isDev = isDev;
 }
 
 
@@ -78,8 +79,13 @@ function send(app,mobile,content,type,mhtOrderNo,notifyUrl) {
 	message = encodeURIComponent(message);
 
 	
-
-	return post("funcode="+type+"&message="+message,"https://sms.ipaynow.cn",app);
+	var url = ""; 
+	if(app.isDev){ 
+		url = "https://dby.ipaynow.cn/sms"; 
+	}else{ 
+		url = "https://sms.ipaynow.cn"; 
+	} 
+	return post("funcode="+type+"&message="+message,url,app);
 }
 
 
@@ -105,7 +111,13 @@ exports.query = function(app,nowPayOrderNo,mobile) {
 
 	content = content+"&mchSign="+mchSign;
 
-	return post1(content,"https://sms.ipaynow.cn");
+	var url = ""; 
+	if(app.isDev){ 
+		url = "https://dby.ipaynow.cn/sms"; 
+	}else{ 
+		url = "https://sms.ipaynow.cn"; 
+	} 
+	return post1(content,url);
 	
 }
 

@@ -4,6 +4,7 @@
 
 - 1.0.0 : 初稿
 
+- 1.0.1 : 允许客户指定调用生产或测试环境
 
 ## 目录 ##
 
@@ -178,8 +179,8 @@
 ```
     //SDK依赖
     var sdk = require('./sdk');
-    //AppId和AppKey
-    var app = new sdk.App("xxxxxxxxx","xxxxxxxxxxxxxx","xxxxxxxxxxxxxxxxxx")
+    //AppId和AppKey,DesKey， 最后参数true表示调用测试环境,false表示调用生产环境
+    var app = new sdk.App("xxxxxxxxx","xxxxxxxxxxxxxx","xxxxxxxxxxxxxxxxxx",true)
 
     // sdk.send_hy(app,"xxxxxx","test内容","","xxxxxxxxxx")
 
