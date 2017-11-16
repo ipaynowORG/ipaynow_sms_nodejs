@@ -79,7 +79,7 @@ function send(app,mobile,content,type,mhtOrderNo,notifyUrl) {
 
 	
 
-	return post("funcode="+type+"&message="+message,"https://sms.ipaynow.cn");
+	return post("funcode="+type+"&message="+message,"https://sms.ipaynow.cn",app);
 }
 
 
@@ -105,7 +105,7 @@ exports.query = function(app,nowPayOrderNo,mobile) {
 
 	content = content+"&mchSign="+mchSign;
 
-	return post(content,"https://sms.ipaynow.cn");
+	return post1(content,"https://sms.ipaynow.cn");
 	
 }
 
@@ -115,7 +115,7 @@ exports.query = function(app,nowPayOrderNo,mobile) {
 
 
 
-function post(content,posturl){
+function post(content,posturl,app){
 	var https = require('https');
 	var util = require('util');
 	var url = require('url');
@@ -137,7 +137,50 @@ function post(content,posturl){
         	result += chunk;
     	});
     	res.on('end', function() {
-            console.log("result="+result);
+            if(result.split("|").length==2){	
+			}else{
+            	var return2 = result.split("|")[1];
+
+				var util = require('./util');
+            	var originalMsg = util.decrypt(return2.replace(/[\r\n]/g,""),app.desKey);
+				console.log(originalMsg);
+			}
+        });
+    
+	});
+	post_req.write(content);
+	post_req.end();
+	return result;
+}
+
+
+
+function post1(content,posturl){
+	var https = require('https');
+	var util = require('util');
+	var url = require('url');
+	var querystring = require('querystring');
+
+
+	var post_option = url.parse(posturl);
+	post_option.method = "POST";
+
+	post_option.headers = {
+    	'Content-Type' : 'text/html',
+    	'Content-Length' : content.length
+	};
+	
+	var result = "";
+	var post_req = https.request(post_option,function(res){
+    	res.setEncoding('utf8');
+    	res.on('data',function(chunk){
+        	result += chunk;
+    	});
+    	res.on('end', function() {
+            if(result.split("|").length==2){	
+			}else{
+            	console.log("result="+result); 
+			}
         });
     
 	});

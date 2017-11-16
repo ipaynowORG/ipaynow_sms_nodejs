@@ -3,8 +3,8 @@
 //SDK依赖
 var sdk = require('./sdk');
 //AppId和AppKey
-var app = new sdk.App("150753086263684","zHGKLmQaU9PLMEGObyubsV5uhDAeYVqQ","a8ifp3YwBSjipz3BisGA8akF")
+var app = new sdk.App("xxxxxxxxxx","xxxxxxxxxxxxxx","xxxxxxxxxxxxxxxxx")
 
-// sdk.send_hy(app,"13401190417","haha哈哈123","","https://op-tester.ipaynow.cn/paytest/notify")
+// sdk.send_hy(app,"xxxxxxxxxxx","haha哈哈12313aas","","https://xxxxxxxxxxxxxxxxxxxxxxx")
 
-sdk.query(app,"400001201711101739382232061","13401190417");
+sdk.query(app,"400001201711161523562502776","xxxxxxxxxx");
